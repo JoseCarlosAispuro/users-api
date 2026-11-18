@@ -12,15 +12,17 @@ A REST API built with Express 5 and SQLite, with JWT authentication, schema vali
 
 ## Getting started
 
+Requires Node.js 20.6 or later.
+
 ```bash
-git clone [repo-url]
-cd [repo-folder]
+git clone https://github.com/JoseCarlosAispuro/users-api.git
+cd users-api
 npm install
 cp .env.example .env   # then fill in the values
-npm run [dev-script]
+npm run dev
 ```
 
-The server runs on `http://localhost:3000`.
+The server runs on `http://localhost:3000`. Use `npm start` to run it without file watching.
 
 ### Environment variables
 
@@ -36,7 +38,7 @@ The server runs on `http://localhost:3000`.
 npm test
 ```
 
-[N] tests cover the routes, validation, auth flows and CORS. Tests run against an in-memory SQLite database that is reset between tests.
+32 tests cover the routes, validation, auth flows and CORS. Tests run against an in-memory SQLite database that is reset between tests.
 
 Tests use their own environment values (defined in `vitest.config.js`), so no `.env` file is needed to run them.
 
