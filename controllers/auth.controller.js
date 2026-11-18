@@ -35,10 +35,14 @@ const loginUser = async (req, res) => {
         return
     }
 
-    const token = jwt.sign({id: existingUser.id}, process.env.JWT_SECRET, {expiresIn: '2min'})
+    const token = jwt.sign({id: existingUser.id}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRES_IN ?? '15min'})
 
     res.status(200).json({"token": token})
 
 }
 
-export { registerUser, loginUser }
+const meUser = (req, res) => {
+    res.status(200).json({id: req.user.id})
+}
+
+export { registerUser, loginUser, meUser }

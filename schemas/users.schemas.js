@@ -13,6 +13,9 @@ export const idParamsSchema = z.object({
 })
 
 export const authSchema = z.object({
-    username: z.string().min(3),
-    password: z.string().min(8)
+    username: z.string().trim().min(3).max(50),
+    password: z.string().min(8).refine(
+        (pw) => Buffer.byteLength(pw, 'utf8') <= 72,
+        { message: 'Password must be at most 72 bytes' }
+    )
 })

@@ -23,10 +23,10 @@ const update = async (id, name) => {
 }
 
 const remove = async (id) => {
-    const deletionUser = getById(id)
+    const user = await getById(id)
     db.prepare('DELETE FROM users WHERE id = ?').run(id)
 
-    return await deletionUser
+    return user
 }
 
 export {getAll, getUserByName, getById, create, update, remove}

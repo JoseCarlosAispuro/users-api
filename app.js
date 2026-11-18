@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import { usersRouter } from './routes/users.routes.js'
 import { authRouter } from './routes/auth.routes.js'
 
@@ -16,6 +17,10 @@ app.use((req, res, next) => {
 
     next();
 })
+
+app.use(cors({
+    origin: process.env.CORS_ORIGIN.split(',')
+}))
 
 app.use('/auth', authRouter)
 app.use('/users', usersRouter)
