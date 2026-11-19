@@ -19,3 +19,8 @@ export const authSchema = z.object({
         { message: 'Password must be at most 72 bytes' }
     )
 })
+
+export type UserQuery = z.infer<typeof userQuerySchema>
+export type UserBody = z.infer<typeof userBodySchema>
+export type IdParam = z.infer<typeof idParamsSchema>
+export type Credentials = z.infer<typeof authSchema>
